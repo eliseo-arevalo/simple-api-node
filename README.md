@@ -8,7 +8,7 @@ Esta es una API REST simple construida con Express.js que proporciona operacione
 
 ## Requisitos
 
-- Node.js (versión 14 o superior)
+- Node.js (versión 18 o superior)
 - npm (Node Package Manager)
 
 ## Instalación

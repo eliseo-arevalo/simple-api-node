@@ -11,6 +11,7 @@ let users = [
   { id: 2, name: 'Maria', email: 'maria@example.com' },
   { id: 3, name: 'Pedro', email: 'pedro@example.com' }
 ];
+let nextUserId = 4;
 
 // Root endpoint
 app.get('/', (req, res) => {
@@ -55,7 +56,7 @@ app.post('/api/users', (req, res) => {
   }
   
   const newUser = {
-    id: users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1,
+    id: nextUserId++,
     name,
     email
   };
@@ -98,8 +99,8 @@ app.use((req, res) => {
   res.status(404).json({ error: 'Ruta no encontrada' });
 });
 
-// Error handler
-app.use((err, req, res, next) => {
+// Error handler - Express requires 4 parameters to recognize as error handler
+app.use((err, req, res, _next) => {
   console.error(err.stack);
   res.status(500).json({ error: 'Error interno del servidor' });
 });
